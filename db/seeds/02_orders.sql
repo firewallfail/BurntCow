@@ -1,4 +1,3 @@
-
 INSERT INTO orders (id, user_id, time_ordered, time_complete, total_price) VALUES (1, 523, '2021-11-26 05:24:09', '2021-11-26 05:44:00', 15999);
 INSERT INTO orders (id, user_id, time_ordered, time_complete, total_price) VALUES (2, 964, '2021-06-26 10:44:02', '2021-06-26 10:54:21', 6646);
 INSERT INTO orders (id, user_id, time_ordered, time_complete, total_price) VALUES (3, 861, '2021-08-21 09:54:23', '2021-08-21 10:13:53', 17918);
