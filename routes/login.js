@@ -10,6 +10,9 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    if (req.session.user_id) {
+      return res.redirect('/order');
+    }
     res.render("login");
   });
 
@@ -23,6 +26,7 @@ module.exports = (db) => {
       [email.toLowerCase()])
       .then(data => {
         if (password === data.rows[0].password) {
+          req.session.user_id = data.rows[0].id;
           return res.redirect('/order');
         }
         res.redirect('/login');
