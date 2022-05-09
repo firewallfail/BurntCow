@@ -17,6 +17,9 @@
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
   <!-- App JS libraries -->
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -25,8 +28,17 @@
 <body>
 
   <main>
-    <h1>login</h1>
+    <img src="/assets/cow.png" alt="BurntCow">
+    <form action="/login" method="POST">
+      <h1>Sign-In</h1>
+      <label for="email">Email address</label>
+      <input type="email" name="email" id="email" placeholder="Enter email">
+      <label for="password">password</label>
+      <input type="password" name="password" id="password" placeholder="Enter password">
+      <button type="submit">Login</button>
+    </form>
   </main>
+
 
 </body>
 
