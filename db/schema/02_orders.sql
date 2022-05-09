@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS orders CASCADE;
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  time_ordered TIMESTAMP NOT NULL,
+  time_complete TIMESTAMP,
+  total_price BIGINT
+);
