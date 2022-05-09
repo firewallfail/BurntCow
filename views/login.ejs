@@ -23,22 +23,36 @@
 
   <!-- App JS libraries -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- Internal Css -->
+  <link href="styles/login.css" rel="stylesheet">
 </head>
 
 <body>
 
   <main>
-    <img src="/assets/cow.png" alt="BurntCow">
-    <form action="/login" method="POST">
-      <h1>Sign-In</h1>
-      <label for="email">Email address</label>
-      <input type="email" name="email" id="email" placeholder="Enter email">
-      <label for="password">password</label>
-      <input type="password" name="password" id="password" placeholder="Enter password">
-      <button type="submit">Login</button>
-    </form>
+    <img src="assets/logo.png">
+    <div class="login-box border border-1 rounded">
+      <label class="form-label border-bottom">Sign-In</label>
+      <form class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email</label>
+          <input type="email" class="form-control" id="emailInput" required>
+          <div class="invalid-feedback">
+            Please enter your email
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input type="password" class="form-control" id="passwordInput" required>
+          <div class="invalid-feedback">
+            Please enter a password
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
   </main>
-
 
 </body>
 
