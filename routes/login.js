@@ -25,8 +25,9 @@ module.exports = (db) => {
     ;`,
       [email.toLowerCase()])
       .then(data => {
-        if (password === data.rows[0].password) {
-          req.session.user_id = data.rows[0].id;
+        const user = data.rows[0]
+        if (password === user.password) {
+          req.session.user_id = user.id;
           return res.redirect('/order');
         }
         res.redirect('/login');
