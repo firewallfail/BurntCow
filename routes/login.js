@@ -13,6 +13,7 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
+    console.log(req.body);
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;

@@ -34,17 +34,17 @@
     <a href="/"><img src="assets/logo.png"></a>
     <div class="login-box border border-1 rounded">
       <label class="form-label border-bottom">Sign-In</label>
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" action="/login" method="POST" novalidate>
         <div class="mb-3">
           <label for="emailInput" class="form-label">Email</label>
-          <input type="email" class="form-control" id="emailInput" required>
+          <input type="email" class="form-control" name="email" id="emailInput" required>
           <div class="invalid-feedback">
             Please enter your email
           </div>
         </div>
         <div class="mb-3">
           <label for="passwordInput" class="form-label">Password</label>
-          <input type="password" class="form-control" id="passwordInput" required>
+          <input type="password" class="form-control" name="password" id="passwordInput" required>
           <div class="invalid-feedback">
             Please enter a password
           </div>
