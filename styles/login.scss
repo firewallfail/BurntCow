@@ -8,38 +8,22 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 12em;
+  width: 60px;
+  height: 60px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .login-box {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 40%;
+  max-width: 600px;
+  min-width: 300px;
   margin: 1em 0;
   padding: 1em;
-}
-
-.email {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-}
-
-.password {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.register-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
