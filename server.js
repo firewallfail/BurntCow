@@ -7,6 +7,10 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const bcrypt = require('bcryptjs');
+const cookieSession = require('cookie-session');
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
+const bodyParser = require("body-parser");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -21,6 +25,12 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieSession({
+  name: 'user_id',
+  secret: COOKIE_SECRET
+}));
 
 app.use(
   "/styles",
