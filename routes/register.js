@@ -13,16 +13,8 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    console.log(req.body);
+    res.redirect("/register");
   });
   return router;
 };
