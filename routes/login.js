@@ -5,6 +5,7 @@
  */
 
 const express = require('express');
+const { render } = require('express/lib/response');
 const router = express.Router();
 
 module.exports = (db) => {
@@ -13,11 +14,18 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body);
-    db.query(`SELECT * FROM users;`)
+    const { email, password } = req.body;
+    db.query(`
+    SELECT *
+    FROM users
+    WHERE email LIKE $1
+    ;`,
+      [email.toLowerCase()])
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        if (password === data.rows[0].password) {
+          return res.redirect('/order');
+        }
+        res.redirect('/login');
       })
       .catch(err => {
         res
