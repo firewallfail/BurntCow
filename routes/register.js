@@ -1,7 +1,6 @@
 /*
  * All routes for register are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /users
+ *   these routes are mounted onto /register
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 

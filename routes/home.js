@@ -1,6 +1,6 @@
 /*
- * All routes for login are defined here
- *   these routes are mounted onto /login
+ * All routes for home are defined here
+ *   these routes are mounted onto /
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
