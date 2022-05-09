@@ -1,0 +1,21 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .register-box {
+    width: 35%;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 1em 0;
+    padding: 1em;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    a {
+      padding-top: 1rem;
+      text-align: center;
+    }
+  }
+}

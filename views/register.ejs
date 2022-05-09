@@ -17,15 +17,66 @@
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.17/jquery.inputmask.min.js"
+    integrity="sha512-zdfH1XdRONkxXKLQxCI2Ak3c9wNymTiPh5cU4OsUavFDATDbUzLR+SYWWz0RkhDmBDT0gNSUe4xrQXx8D89JIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- App JS libraries -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- App CSS -->
+  <link href="styles/register.css" rel="stylesheet">
 </head>
 
 <body>
 
   <main>
-    <h1>register</h1>
+    <a href="/">
+      <img src="assets/logo.png">
+    </a>
+    <div class="register-box border border-1 rounded">
+      <label class="form-label border-bottom">Register</label>
+      <form class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="fullNameInput" class="form-label">Your name (First & Last name)</label>
+          <input type="text" class="form-control" id="fullNameInput" required>
+          <div class="invalid-feedback">
+            Please enter your name
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email</label>
+          <input type="email" class="form-control" id="emailInput" required>
+          <div class="invalid-feedback">
+            Please enter your email
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="mobileNumberInput" class="form-label">Mobile Number</label>
+          <input type="tel" class="form-control" id="mobileNumberInput" pattern="\([0-9]{3}\)-[0-9]{3}-[0-9]{4}"
+            required>
+          <div class="invalid-feedback">
+            Please correct your phone input
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input type="password" class="form-control" id="passwordInput" required>
+          <div class="invalid-feedback">
+            Please enter a password
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPasswordInput" required>
+          <div class="invalid-feedback">
+            Please enter the same password as above
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a href="/login">Already have an account? Login here</a>
+      </form>
+    </div>
   </main>
 
 </body>
