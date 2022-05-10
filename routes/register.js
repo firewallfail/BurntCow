@@ -33,7 +33,7 @@ module.exports = (db) => {
     `, [email])
       .then(data => {
         if (data.rows.length) {
-          throw {code: 409, errorText:"Email already in use, please use a different one"};
+          throw { code: 409, errorText: "Email already in use, please use a different one" };
         }
 
         return db.query(`
@@ -43,7 +43,7 @@ module.exports = (db) => {
       })
       .then(data => {
         if (data.rows.length) {
-          throw {code: 409, errorText:"Phone number already in use, please use a different one"};
+          throw { code: 409, errorText: "Phone number already in use, please use a different one" };
         }
 
         return db.query(`
@@ -53,7 +53,7 @@ module.exports = (db) => {
         `, values);
       })
       .then(user => {
-        req.session.userId = user.id;
+        req.session.userId = user.rows[0].id;
         return res.status(201).json("User created");
       })
       .catch(error => {

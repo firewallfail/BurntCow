@@ -4,14 +4,14 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const bcrypt = require('bcryptjs/dist/bcrypt');
 const express = require('express');
-const { render } = require('express/lib/response');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
+const { BCRYPT_SALT } = process.env;
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    if (req.session.user_id) {
+    if (req.session.userId) {
       return res.redirect('/order');
     }
     res.render("login");
@@ -22,7 +22,7 @@ module.exports = (db) => {
     db.query(`
     SELECT *
     FROM users
-    WHERE email LIKE $1
+    WHERE LOWER(email) LIKE $1
     ;`,
       [email.toLowerCase()])
       .then(data => {
@@ -30,7 +30,7 @@ module.exports = (db) => {
         if (!user || password !== user.password) {
           return res.redirect('/login');
         }
-        req.session.user_id = user.id;
+        req.session.userId = user.id;
         return res.redirect('/order');
       })
       .catch(err => {
