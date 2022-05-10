@@ -23,6 +23,7 @@
 
   <!-- App JS libraries -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/register.js"></script>
 
   <!-- App CSS -->
   <link href="styles/register.css" rel="stylesheet">
@@ -35,7 +36,7 @@
       <img src="assets/logo.png">
     </a>
     <div class="register-box border border-1 rounded">
-      <form class="needs-validation" action="/register" method="POST" novalidate>
+      <form id="register-form" class="needs-validation" method="POST" novalidate>
         <label class="form-label border-bottom">Register</label>
         <div class="mb-3">
           <label for="fullNameInput" class="form-label">Your name (First & Last name)</label>
@@ -53,8 +54,8 @@
         </div>
         <div class="mb-3">
           <label for="mobileNumberInput" class="form-label">Mobile Number</label>
-          <input type="tel" class="form-control" name="mobileNumber" id="mobileNumberInput" value="4383891059" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
-            required>
+          <input type="tel" class="form-control" name="phone" id="mobileNumberInput" value="4383891059"
+            pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required>
           <div class="invalid-feedback">
             Please correct your phone input
           </div>
@@ -73,6 +74,7 @@
             Please enter the same password as above
           </div>
         </div>
+        <span id="register-error" class="mb-3"></span>
         <button type="submit" class="btn btn-primary">Register</button>
         <a href="/login">Already have an account? Login here</a>
       </form>
