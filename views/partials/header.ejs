@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-expand navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img src="/assets/logo.png" alt="" width="30" height="30">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -9,17 +9,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mb-2 pe-auto mb-lg-0 ">
-          <a class="nav-item nav-link active" aria-current="page" href="/">Home</a>
+        <div class="navbar-nav mb-2 mb-sm-0 w-100 justify-content-between">
+          <div></div>
           <form>
-            <input class="form-control" type="search" placeholder="Search for your favorite foods!"
+            <input class="form-control text-center" type="search" placeholder="Search for your favorite foods!"
               aria-label="FoodSearch">
           </form>
+          <div class="d-inline-flex">
+            <a class="btn btn-primary me-2" aria-current="page" href="/login">Login</a>
+            <a class="btn btn-primary me-2" aria-current="page" href="/logout">Logout</a>
+            <a class="btn btn-primary" aria-current="page" href="/order">Cart</a>
+          </div>
         </div>
-      </div>
-      <div class="d-inline-flex">
-        <a class="nav-item nav-link active" aria-current="page" href="/login">Login/Register/Profile</a>
-        <a class="nav-item nav-link active" aria-current="page" href="/order">Cart</a>
       </div>
     </div>
   </nav>
