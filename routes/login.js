@@ -34,7 +34,7 @@ module.exports = (db) => {
       .then(data => {
         const user = data.rows[0];
         if (!user) {
-          throw { code: 409, errorText: "Wrong Email" }
+          throw { code: 409, errorText: "Wrong Email" };
         }
         //log in dummy accounts with any password
         if (user.id < 1000) {
@@ -43,12 +43,15 @@ module.exports = (db) => {
         }
         const hashedPassword = user.password;
         if (!bcrypt.compareSync(password, hashedPassword)) {
-          return res.redirect('/login');
+          throw { code: 409, errorText: "Wrong Password" };
         }
         req.session.userId = user.id;
         return res.status(200).json('Logged In');
       })
       .catch(err => {
+        if (err.code) {
+          return res.status(err.code).json(err.errorText);
+        }
         res.status(500).json({ error: err.message });
       });
   });

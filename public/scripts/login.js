@@ -8,7 +8,7 @@ $(document).ready(() => {
         window.location.replace('/order');
       })
       .fail(res => {
-        console.log(res);
+        console.log(res.responseJSON);
       })
   })
 });
