@@ -26,11 +26,11 @@ module.exports = (db) => {
       [email.toLowerCase()])
       .then(data => {
         const user = data.rows[0]
-        if (password === user.password) {
-          req.session.user_id = user.id;
-          return res.redirect('/order');
+        if (!user || password !== user.password) {
+          return res.redirect('/login');
         }
-        res.redirect('/login');
+        req.session.user_id = user.id;
+        return res.redirect('/order');
       })
       .catch(err => {
         res
