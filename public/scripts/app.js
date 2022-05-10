@@ -10,12 +10,10 @@ $(document).ready(function() {
       form.addEventListener('submit', function(event) {
         if (!form.checkValidity()) {
           event.preventDefault();
-          event.stopPropagation();
+          event.stopImmediatePropagation();
         }
 
         form.classList.add('was-validated');
       }, false);
     });
-
-  $("input[type='tel']").inputmask("(999) 999-9999");
 });
