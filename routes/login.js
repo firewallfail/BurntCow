@@ -33,12 +33,20 @@ module.exports = (db) => {
       [email.toLowerCase()])
       .then(data => {
         const user = data.rows[0];
+        if (!user) {
+          throw { code: 409, errorText: "Wrong Email" }
+        }
+        //log in dummy accounts with any password
+        if (user.id < 1000) {
+          req.session.userId = user.id;
+          return res.status(200).json('Logged In');
+        }
         const hashedPassword = user.password;
         if (!bcrypt.compareSync(password, hashedPassword)) {
           return res.redirect('/login');
         }
         req.session.userId = user.id;
-        return res.redirect('/order');
+        return res.status(200).json('Logged In');
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
