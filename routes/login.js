@@ -27,7 +27,8 @@ module.exports = (db) => {
       [email.toLowerCase()])
       .then(data => {
         const user = data.rows[0];
-        if (!user || password !== user.password) {
+        const hashedPassword = user.password;
+        if (!bcrypt.compareSync(password, hashedPassword)) {
           return res.redirect('/login');
         }
         req.session.userId = user.id;
