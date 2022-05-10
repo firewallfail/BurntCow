@@ -19,6 +19,12 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+      console.log('hitting');
+      return res.json(400, "Missing information");
+    }
+
     db.query(`
     SELECT *
     FROM users
@@ -35,9 +41,7 @@ module.exports = (db) => {
         return res.redirect('/order');
       })
       .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.status(500).json({ error: err.message });
       });
   });
   return router;
