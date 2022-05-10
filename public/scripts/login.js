@@ -13,7 +13,6 @@ $(document).ready(() => {
           $('#emailInput').val('');
         }
         $('#login-error').text(res.responseJSON).slideDown(5000);
-        console.log(res.responseJSON);
       })
   })
 });
