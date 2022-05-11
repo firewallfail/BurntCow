@@ -13,15 +13,16 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    db.query(`
+    SELECT *
+    FROM menu_items
+    LIMIT 10;
+    `)
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        res.json(data.rows);
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch(error => {
+        console.log(error);
       });
   });
   return router;
