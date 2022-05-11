@@ -48,25 +48,23 @@ INSERT INTO menu_items (item, picture, price, description) VALUES ('Sole - Fille
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Propel Sport Drink', 'http://dummyimage.com/249x100.png/dddddd/000000', 1189, 'nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Capicola - Hot', 'http://dummyimage.com/207x100.png/cc0000/ffffff', 1981, 'luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Vinegar - White Wine', 'http://dummyimage.com/208x100.png/dddddd/000000', 669, 'dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis');
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Top Bun', '1', 1074, 'Two beef patties, fancy sauce, cheese, pickles, chopped lettuce, diced onion.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('The Richmond', '1', 1074, 'Double cheese burger with bacon & caramelized onions.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Varsity Blues', '1', 1099, 'Two beef patties, bacon & blue cheese.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Say Cheese', '1', 1149, 'Double cheeseburger.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('The Portobello', '1', 874, 'A Portobello stuffed with herbed cheese, rolled in panko crumbs, & fried.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Chicken Burger', '1', 999, 'Fried chicken on a sesame bun.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Hamburger', '1', 699, 'Old fashioned hamburger.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Cheeseburger', '1', 749, 'Old fashioned hamburger...with cheese.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Baconburger', '1', 749, 'Old fashioned hamburger...with bacon.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Soy Burger', '', 799, 'Hamburger hold the ham.')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('', '', , '')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('', '', , '')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Small Drink', '1', 199, 'Small fountain pop')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Medium Drink', '1', 249, 'Medium fountain pop')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Large Drink', '1', 299, 'Large fountain pop')
-
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Small Fries', '1', 299, 'Small order of fries')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Regular Fries', '1', 399, 'Regular order of fries')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Large Fries', '1', 499, 'Large order of fries')
-
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Chocolate Shake', '1', 449, 'Delicious chocolate milk shake')
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Strawberry Shake', '1', 449, 'Delicious strawberry milk shake')
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Top Bun', 'assets/top_bun_burger.jpg', 1074, 'Two beef patties, fancy sauce, cheese, pickles, chopped lettuce, diced onion.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('The Richmond', 'assets/richmond_burger.jpg', 1074, 'Double cheese burger with bacon & caramelized onions.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Varsity Blues', 'assets/varsity_blues_burger.jpg', 1099, 'Two beef patties, bacon & blue cheese.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Say Cheese', 'assets/say_cheese_burger.jpg', 1149, 'Double cheeseburger.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('The Portobello', 'assets/portobello_burger.jpg', 874, 'A Portobello stuffed with herbed cheese, rolled in panko crumbs, & fried.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Chicken Burger', 'assets/chicken_burger.jpg', 999, 'Fried chicken on a sesame bun.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Hamburger', 'assets/burger.jpg', 699, 'Old fashioned hamburger.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Cheeseburger', 'assets/cheese_burger.jpg', 749, 'Old fashioned hamburger...with cheese.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Baconburger', 'assets/burger.jpg', 749, 'Old fashioned hamburger...with bacon.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Soy Burger', 'assets/burger.jpg', 799, 'Hamburger hold the ham.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('House Salad', 'assets/house_salad.jpg', 599, 'House salad with your choice of dressing.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Caesar Salad', 'assets/caesar_salad.jpg', 699, 'Creamy caesar salad.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Small Drink', 'assets/soda.jpg', 199, 'Small fountain pop.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Medium Drink', 'assets/soda.jpg', 249, 'Medium fountain pop.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Large Drink', 'assets/soda.jpg', 299, 'Large fountain pop.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Small Fries', 'assets/fries.jpg', 299, 'Small order of fries.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Regular Fries', 'assets/fries.jpg', 399, 'Regular order of fries.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Large Fries', 'assets/fries.jpg', 499, 'Large order of fries.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Chocolate Shake', 'assets/chocolate_shake.jpg', 449, 'Delicious chocolate milk shake.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Strawberry Shake', 'assets/strawberry_shake.jpg', 449, 'Delicious strawberry milk shake.');
