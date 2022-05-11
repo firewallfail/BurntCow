@@ -11,7 +11,7 @@ $(document).ready(() => {
         $article.append($leftDiv);
         $article.append(`<span class="food-description">${item.description}</span>`);
         $rightDiv.append(`<span class="food-cost">${toDollar(item.price)}</span>`);
-        $(`<button class="btn btn-success" data-food-id=${item.id}>Add</button>`).on('click', addToCart).appendTo($rightDiv);
+        $(`<button class="btn btn-success" data-food-id=${item.id}>Add</button>`).on('click', addToCart).on('click', updateCart).appendTo($rightDiv);
         $article.append($rightDiv);
         $menu.append($article);
       }
@@ -19,15 +19,16 @@ $(document).ready(() => {
     .fail(error => {
       console.log(error);
     });
-  //update local cart using DB
 });
 
 const toDollar = (centsValue) => {
   return "$" + (centsValue / 100).toFixed(2);
 };
 
-const addToCart = function(event) {
-  console.log(this.dataset.foodId);
-  //send to cart
-  //update local cart using DB
+const addToCart = function() {
+  const { foodId } = this.dataset;
+  const cart = JSON.parse(Cookies.get("cart") || "{}");
+  cart[foodId] = ++cart[foodId] || 1;
+  console.log(cart);
+  Cookies.set("cart", JSON.stringify(cart));
 };
