@@ -50,7 +50,7 @@ INSERT INTO menu_items (item, picture, price, description) VALUES ('Capicola - H
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Vinegar - White Wine', 'http://dummyimage.com/208x100.png/dddddd/000000', 669, 'dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Top Bun', 'assets/top_bun_burger.jpg', 1074, 'Two beef patties, fancy sauce, cheese, pickles, chopped lettuce, diced onion.');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('The Richmond', 'assets/richmond_burger.jpg', 1074, 'Double cheese burger with bacon & caramelized onions.');
-INSERT INTO menu_items (item, picture, price, description) VALUES ('Varsity Blues', 'assets/varsity_blues_burger.jpg', 1099, 'Two beef patties, bacon & blue cheese.');
+INSERT INTO menu_items (item, picture, price, description) VALUES ('Varsity Blues', 'assets/varsity_blue_burger.jpg', 1099, 'Two beef patties, bacon & blue cheese.');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Say Cheese', 'assets/say_cheese_burger.jpg', 1149, 'Double cheeseburger.');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('The Portobello', 'assets/portobello_burger.jpg', 874, 'A Portobello stuffed with herbed cheese, rolled in panko crumbs, & fried.');
 INSERT INTO menu_items (item, picture, price, description) VALUES ('Chicken Burger', 'assets/chicken_burger.jpg', 999, 'Fried chicken on a sesame bun.');
