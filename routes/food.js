@@ -9,11 +9,20 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const templateVars = {
-      userId: req.session.userId
-    };
-    res.render("index", templateVars);
+    db.query(`
+    SELECT *
+    FROM menu_items
+    LIMIT 10;
+    `)
+      .then(data => {
+        res.json(data.rows);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   });
+
+  router.get("/");
 
   return router;
 };
