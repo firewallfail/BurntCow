@@ -36,8 +36,6 @@ module.exports = (db) => {
     const phone = req.body.phone.split(/[^0-9]/gm).join('');
     const userId = req.session.userId;
 
-    console.log(phone);
-
     const values = [
       fullName,
       email,
@@ -66,9 +64,7 @@ module.exports = (db) => {
         return res.status(200).json("Profile updated");
       })
       .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.status(500).json("An error has occured, please try again later");
       });
   });
   return router;
