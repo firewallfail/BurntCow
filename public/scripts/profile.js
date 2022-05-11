@@ -4,7 +4,6 @@ $(document).ready(() => {
 
   const $form = $("#update-form");
   $form.on('submit', (event) => {
-    // $messageBox.slideUp();
     event.preventDefault();
     event.stopPropagation();
 
