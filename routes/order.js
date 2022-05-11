@@ -9,7 +9,10 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render("order");
+    const templateVars = {
+      userId: req.session.userId
+    };
+    res.render("order", templateVars);
   });
 
   router.post("/", (req, res) => {
