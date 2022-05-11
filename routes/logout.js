@@ -10,7 +10,7 @@ const router = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     res.clearCookie('user_id');
-    res.clearCookie('user_id.sig');
+    res.clearCookie('user_id.sig'); //TODO: Use recommended method of clearing session -> req.session = null
     return res.redirect("/order");
   });
 

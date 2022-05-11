@@ -17,15 +17,44 @@
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
   <!-- App JS libraries -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/login.js"></script>
+
+  <!-- Internal Css -->
+  <link href="styles/login.css" rel="stylesheet">
 </head>
 
 <body>
 
   <main>
-    <h1>login</h1>
+    <a href="/"><img src="assets/logo.png"></a>
+    <div class="login-box border border-1 rounded">
+      <label class="form-label border-bottom">Sign-In</label>
+      <form id="login" class="needs-validation" action="/login" method="POST" novalidate>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" id="emailInput" required>
+          <div class="invalid-feedback">
+            Please enter your email
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="passwordInput" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="passwordInput" required>
+          <div class="invalid-feedback">
+            Please enter a password
+          </div>
+        </div>
+        <span id="login-error" class="mb-3"></span>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a href="/register">Don't have an account? Create an account!</a>
+    </div>
   </main>
 
 </body>
