@@ -16,9 +16,24 @@
               aria-label="FoodSearch">
           </form>
           <div class="d-inline-flex">
+            <% if (!locals.userId) { %>
             <a class="btn btn-primary me-2" aria-current="page" href="/login">Login</a>
+            <% } else { %>
             <a class="btn btn-primary me-2" aria-current="page" href="/logout">Logout</a>
-            <a class="btn btn-primary" aria-current="page" href="/order">Cart</a>
+            <% } %>
+            <div class="btn-group">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuClickableInside"
+                data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                Cart
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuClickableInside">
+                <li><a class="dropdown-item" href="#">To be</a></li>
+                <li><a class="dropdown-item" href="#">generated</a></li>
+                <li><a class="dropdown-item" href="#">from cookie cart!</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/order">Checkout</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

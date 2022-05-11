@@ -9,19 +9,23 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    res.render("index");
+    const templateVars = {
+      userId: req.session.userId
+    };
+    res.render("index", templateVars);
   });
 
   router.post("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    db.query(`
+    SELECT *
+    FROM menu_items
+    LIMIT 10;
+    `)
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        res.json(data.rows);
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch(error => {
+        console.log(error);
       });
   });
   return router;
