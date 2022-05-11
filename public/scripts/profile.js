@@ -12,6 +12,9 @@ $(document).ready(() => {
         $messageBox.slideUp(400, () => {
           $messageBox.slideDown(600).text('Profile updated');
         });
+        setTimeout(() => {
+          window.location.replace("/profile");
+        }, 3000);
       })
       .fail(response => {
         $messageBox.slideUp(400, () => {
