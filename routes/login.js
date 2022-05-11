@@ -25,10 +25,11 @@ module.exports = (db) => {
       return res.json(400, "Missing information");
     }
 
+    //TODO: Verify password field during login
     db.query(`
     SELECT *
     FROM users
-    WHERE LOWER(email) LIKE $1 //TODO: Verify password field during login
+    WHERE LOWER(email) LIKE $1
     ;`,
     [email.toLowerCase()])
       .then(data => {
@@ -49,6 +50,7 @@ module.exports = (db) => {
         return res.status(200).json('Logged In');
       })
       .catch(err => {
+        console.log(err);
         if (err.code) {
           return res.status(err.code).json(err.errorText);
         }

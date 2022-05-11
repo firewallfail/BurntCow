@@ -19,6 +19,7 @@ module.exports = (db) => {
     db.query(`
     SELECT *
     FROM menu_items
+    WHERE id > 50
     LIMIT 10;
     `)
       .then(data => {
