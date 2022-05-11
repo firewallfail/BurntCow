@@ -48,7 +48,7 @@ app.use(express.static("public"));
 const homeRoutes = require("./routes/home");
 const loginRoutes = require("./routes/login");
 const registerRoutes = require("./routes/register");
-const userSettingsRoutes = require("./routes/userSettings");
+const profileRoutes = require("./routes/profile");
 const orderRoutes = require("./routes/order");
 const logoutRoutes = require("./routes/logout");
 
@@ -57,7 +57,7 @@ const logoutRoutes = require("./routes/logout");
 app.use("/", homeRoutes(db));
 app.use("/login", loginRoutes(db));
 app.use("/register", registerRoutes(db));
-app.use("/userSettings", userSettingsRoutes(db));
+app.use("/profile", profileRoutes(db));
 app.use("/order", orderRoutes(db));
 app.use("/logout", logoutRoutes(db));
 // Note: mount other resources here, using the same pattern above
