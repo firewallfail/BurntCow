@@ -51,6 +51,7 @@ const registerRoutes = require("./routes/register");
 const userSettingsRoutes = require("./routes/userSettings");
 const orderRoutes = require("./routes/order");
 const logoutRoutes = require("./routes/logout");
+const foodRoutes = require("./routes/food");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -60,6 +61,7 @@ app.use("/register", registerRoutes(db));
 app.use("/userSettings", userSettingsRoutes(db));
 app.use("/order", orderRoutes(db));
 app.use("/logout", logoutRoutes(db));
+app.use("/food", foodRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Warning: avoid creating more routes in this file!

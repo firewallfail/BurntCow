@@ -1,6 +1,6 @@
 $(document).ready(() => {
   $menu = $("#menu");
-  $.post("/")
+  $.get("/food")
     .done(data => {
       for (const item of data) {
         $leftDiv = $(`<div>`);
