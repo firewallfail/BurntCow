@@ -9,10 +9,24 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const templateVars = {
-      userId: req.session.userId
-    };
-    res.render("profile", templateVars);
+    if (!req.session.userId) {
+      return res.redirect('/login');
+    }
+    const values = req.session.userId;
+    db.query(`
+    SELECT  * FROM users
+    WHERE id = $1;
+    `, [values])
+      .then(data => {
+        const user = data.rows[0];
+        const templateVars = {
+          userId: req.session.userId,
+          name: user.name,
+          email: user.email,
+          phone: user.phone
+        };
+        res.render("profile", templateVars);
+      })
   });
 
   router.post("/", (req, res) => {

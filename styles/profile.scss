@@ -4,7 +4,7 @@ main {
   align-items: center;
   justify-content: center;
 
-  .register-box {
+  .update-box {
     width: 35%;
     max-width: 600px;
     min-width: 300px;
@@ -21,7 +21,7 @@ main {
       text-align: center;
     }
 
-    #register-error {
+    #update-error {
       display: none;
     }
   }
