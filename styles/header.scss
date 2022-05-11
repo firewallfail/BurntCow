@@ -6,20 +6,29 @@ nav {
 
   .item {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    padding: 3px 10px;
+    padding: 5px 10px;
     min-width: 400px;
 
     .left-group {
       display: flex;
+      align-items: center;
       gap: 1rem;
+    }
+
+    img {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     .item-info {
       display: flex;
       flex-direction: column;
     }
+
     &:hover {
       background-color: var(--bs-gray-300);
     }
