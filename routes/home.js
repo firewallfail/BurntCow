@@ -15,19 +15,5 @@ module.exports = (db) => {
     res.render("index", templateVars);
   });
 
-  router.post("/", (req, res) => {
-    db.query(`
-    SELECT *
-    FROM menu_items
-    WHERE id > 50
-    LIMIT 10;
-    `)
-      .then(data => {
-        res.json(data.rows);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  });
   return router;
 };
