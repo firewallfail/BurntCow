@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Profile</title>
+
+  <!-- Shared Libraries -->
+  <%- include("partials/head"); %>
+
+    <!-- External JS libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8-beta.17/jquery.inputmask.min.js"
+      integrity="sha512-zdfH1XdRONkxXKLQxCI2Ak3c9wNymTiPh5cU4OsUavFDATDbUzLR+SYWWz0RkhDmBDT0gNSUe4xrQXx8D89JIQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Internal JS libraries -->
+    <script type="text/javascript" src="/scripts/profile.js"></script>
+
+    <!-- Internal CSS -->
+    <link href="styles/profile.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <%- include("partials/header", locals); %>
+
+    <main>
+      <a href="/">
+        <img src="assets/logo.png">
+      </a>
+      <div class="update-box border border-1 rounded">
+        <form id="update-form" class="needs-validation" novalidate>
+          <label class="form-label border-bottom">Profile</label>
+          <div class="mb-3">
+            <label for="fullNameInput" class="form-label">Your name (First & Last name)</label>
+            <input type="text" class="form-control" name="fullName" id="fullNameInput" value='<%= name %>' required>
+            <div class="invalid-feedback">
+              Please enter your name
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="emailInput" value="<%= email %>" required>
+            <div class="invalid-feedback">
+              Please enter your email
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mobileNumberInput" class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" name="phone" id="mobileNumberInput" value="<%= phone %>"
+              pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" required>
+            <div class="invalid-feedback">
+              Please correct your phone input
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">New Password</label>
+            <input type="password" class="form-control" name="password" id="passwordInput" value="">
+            <div class="invalid-feedback">
+              Please enter a password
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPasswordInput" class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPasswordInput" value="">
+            <div class="invalid-feedback">
+              Please enter the same password as above
+            </div>
+          </div>
+          <span id="update-message" class="mb-3"></span>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </main>
+
+</body>
+
+</html>
