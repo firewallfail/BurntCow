@@ -12,7 +12,7 @@ module.exports = (db) => {
     const templateVars = {
       userId: req.session.userId
     };
-    res.render("user", templateVars);
+    res.render("profile", templateVars);
   });
 
   router.post("/", (req, res) => {
