@@ -28,22 +28,22 @@ module.exports = (db) => {
     db.query(`
     SELECT *
     FROM users
-    WHERE LOWER(email) LIKE $1
+    WHERE LOWER(email) LIKE $1 //TODO: Verify password field during login
     ;`,
-      [email.toLowerCase()])
+    [email.toLowerCase()])
       .then(data => {
         const user = data.rows[0];
         if (!user) {
-          throw { code: 409, errorText: "Wrong Email" };
+          throw { code: 409, errorText: "Wrong Email" }; //TODO: Remove details of incorrect login in response
         }
         //log in dummy accounts with any password
-        if (user.id < 1000) {
+        if (user.id < 1000) { //TODO: Remove auto-login when using dummy accounts
           req.session.userId = user.id;
           return res.status(200).json('Logged In');
         }
         const hashedPassword = user.password;
         if (!bcrypt.compareSync(password, hashedPassword)) {
-          throw { code: 409, errorText: "Wrong Password" };
+          throw { code: 409, errorText: "Wrong Password" }; //TODO: Use HTTP code 401 ("Unauthorized"), instead of 409 ("Conflict")
         }
         req.session.userId = user.id;
         return res.status(200).json('Logged In');

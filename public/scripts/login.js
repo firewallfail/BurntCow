@@ -9,10 +9,10 @@ $(document).ready(() => {
       })
       .fail(res => {
         $('#passwordInput').val('');
-        if (res.responseJSON === 'Wrong Email') {
+        if (res.responseJSON === 'Wrong Email') { // Make error message more generic ("Incorrect credentials")
           $('#emailInput').val('');
         }
         $('#login-error').text(res.responseJSON).slideDown(5000);
-      })
-  })
+      });
+  });
 });
