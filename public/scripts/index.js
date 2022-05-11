@@ -67,7 +67,10 @@ const updateCart = function () {
               <span>Price: ${toDollar(item.price)}</span>
             </div>
           </div>
-          <button class="btn btn-danger fa fa-close"></button>
+          <div class="right-group">
+            <input value=${cart[item.id]}>
+            <button class="btn btn-danger fa fa-close"></button>
+          </div>
         </li>
       `);
       })
