@@ -50,8 +50,9 @@ module.exports = (db) => {
     WHERE id = $4`, values)
       .then(data => {
         if (!password) {
-          return res.status(200).json("Profile updated");
+          return;
         }
+        console.log('should not show up');
         const values = [
           bcrypt.hashSync(password, BCRYPT_SALT),
           userId
