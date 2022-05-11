@@ -5,7 +5,9 @@
  */
 
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
+const { BCRYPT_SALT } = process.env;
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -30,10 +32,38 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    const { fullName, email, password } = req.body;
+    const phone = req.body.phone.split(/[^0-9]/gm).join('');
+    const userId = req.session.userId;
+
+    console.log(phone);
+
+    const values = [
+      fullName,
+      email,
+      phone,
+      userId
+    ];
+
+    db.query(`UPDATE users
+    SET name = $1,
+        email = $2,
+        phone = $3
+    WHERE id = $4`, values)
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        if (!password) {
+          return res.status(200).json("Profile updated");
+        }
+        const values = [
+          bcrypt.hashSync(password, BCRYPT_SALT),
+          userId
+        ];
+        return db.query(`UPDATE users
+        SET password = $1
+        WHERE id = $2`, values);
+      })
+      .then(data => {
+        return res.status(200).json("Profile updated");
       })
       .catch(err => {
         res
