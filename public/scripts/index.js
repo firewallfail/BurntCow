@@ -1,11 +1,11 @@
 $(document).ready(() => {
-  $menu = $("#menu");
+  const $menu = $("#menu");
   $.post("/")
     .done(data => {
       for (const item of data) {
-        $leftDiv = $(`<div>`);
-        $rightDiv = $(`<div>`);
-        $article = $(`<article data-id=${item.id}>`);
+        const $leftDiv = $(`<div>`);
+        const $rightDiv = $(`<div>`);
+        const $article = $(`<article data-id=${item.id}>`);
         $leftDiv.append(`<img src="${item.picture}">`);
         $leftDiv.append(`<span class="food-name">${item.item}</span>`);
         $article.append($leftDiv);
@@ -31,4 +31,8 @@ const addToCart = function() {
   cart[foodId] = ++cart[foodId] || 1;
   console.log(cart);
   Cookies.set("cart", JSON.stringify(cart));
+};
+
+const updateCart = function() {
+
 };
