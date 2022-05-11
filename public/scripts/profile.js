@@ -1,4 +1,26 @@
 $(document).ready(() => {
+
+  const $messageBox = $('#update-message');
+
+  const $form = $("#update-form");
+  $form.on('submit', (event) => {
+    // $messageBox.slideUp();
+    event.preventDefault();
+    event.stopPropagation();
+
+    $.post("/profile", $form.serialize())
+      .done(() => {
+        $messageBox.slideUp(400, () => {
+          $messageBox.slideDown(600).text('Profile updated');
+        });
+      })
+      .fail(response => {
+        $messageBox.slideUp(400, () => {
+          $messageBox.slideDown(600).text('Email or Number already in use');
+        });
+      });
+  });
+
   $("input[type='tel']").inputmask({
     mask: "(999) 999-9999",
     autoUnmask: true
