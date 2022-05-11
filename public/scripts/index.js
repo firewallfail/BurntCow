@@ -1,6 +1,9 @@
 $(document).ready(() => {
   $menu = $("#menu");
-  $.get("/food")
+  $.get("/food", {
+    offset: 50,
+    limit: 10
+  })
     .done(data => {
       for (const item of data) {
         $leftDiv = $(`<div>`);
