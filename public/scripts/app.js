@@ -31,6 +31,24 @@ const setCart = (object) => {
   Cookies.set("cart", JSON.stringify(object));
 };
 
+const removeFromCart = (id) => {
+  const cart = getCart();
+  delete cart[id];
+  setCart(cart);
+};
+
+const incrementItem = (id) => {
+  const cart = getCart();
+  ++cart[id];
+  setCart(cart);
+};
+
+const decrementItem = (id) => {
+  const cart = getCart();
+  --cart[id];
+  setCart(cart);
+};
+
 const addToCart = function() {
   const { foodId } = this.dataset;
   const cart = getCart();
@@ -50,21 +68,45 @@ const updateCart = function() {
   for (const id in cart) {
     $.get(`/food/${id}`)
       .then(item => {
-        $cartMenu.append(`
-        <li class="item" data-id="${item.id}">
-          <div class="left-group">
-            <img src="${item.picture}" alt="" />
-            <div class="item-info">
-              <span>${item.item}</span>
-              <span>Price: ${toDollar(item.price)}</span>
+        const $listItem = $(`<li class="item" data-id="${item.id}">`);
+        $listItem.append(`
+        <div class="left-group">
+          <img src="${item.picture}" alt="" />
+          <div class="item-info">
+            <span>${item.item}</span>
+            <span>Price: ${toDollar(item.price)}</span>
+          </div>
+        </div>
+        <div class="right-group">
+          <div class="d-flex justify-content-between">
+            <label class="counter">${cart[item.id]}</label>
+            <div class="d-flex flex-column">
+              <i class="fa-solid fa-plus"></i>
+              <i class="fa-solid fa-minus"></i>
             </div>
           </div>
-          <div class="right-group">
-            <input value=${cart[item.id]}>
-            <button class="btn btn-danger fa fa-close"></button>
-          </div>
-        </li>
-      `);
+          <button class="btn btn-danger fa fa-close"></button>
+        </div>
+        `);
+        $cartMenu.append($listItem);
+        $listItem.find(".fa-plus").on("click", function() {
+          incrementItem(item.id);
+          const $counter = $listItem.find(".counter");
+          $counter.text(parseInt($counter.text(), 10) + 1);
+        });
+        $listItem.find(".fa-minus").on("click", function() {
+          const $counter = $listItem.find(".counter");
+          decrementItem(item.id);
+          $counter.text(parseInt($counter.text(), 10) - 1);
+          if (parseInt($counter.text(), 10) === 0) {
+            removeFromCart(item.id);
+            updateCart();
+          }
+        });
+        $listItem.find(".fa-close").on("click", function() {
+          removeFromCart(item.id);
+          $listItem.remove();
+        });
       })
       .catch(error => {
         console.log(error);
