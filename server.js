@@ -52,6 +52,7 @@ const profileRoutes = require("./routes/profile");
 const orderRoutes = require("./routes/order");
 const logoutRoutes = require("./routes/logout");
 const foodRoutes = require("./routes/food");
+const smsRoutes = require("./routes/sms");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -62,6 +63,7 @@ app.use("/profile", profileRoutes(db));
 app.use("/order", orderRoutes(db));
 app.use("/logout", logoutRoutes(db));
 app.use("/food", foodRoutes(db));
+app.use("/sms", smsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Warning: avoid creating more routes in this file!
