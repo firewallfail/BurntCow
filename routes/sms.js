@@ -10,7 +10,7 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const accountSid = process.env.TWILIO_ACC_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioNumber = process.env.TWILIO_NUMBER;
-const twilioReceivingNumber = process.env.MY_NUMBER;
+const twilioReceivingNumber = process.env.RECEIVING_NUMBER;
 const client = require('twilio')(accountSid, authToken);
 
 module.exports = (db) => {
