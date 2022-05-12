@@ -42,12 +42,22 @@ module.exports = (db) => {
       })
       .then(message => console.log(message.sid));
 
-    const twiml = new MessagingResponse();
+    const values = [pickupTime, order]
 
-    twiml.message(`Order: ${order} will be ready at ${pickupTime}`);
+    db.query(`
+    UPDATE orders
+    SET time_complete = $1
+    WHERE id = $2;
+    `, values)
+      .then(() => {
+        const twiml = new MessagingResponse();
 
-    res.writeHead(200, { 'Content-Type': 'text/xml' });
-    res.end(twiml.toString());
+        twiml.message(`Server updated`);
+
+        res.writeHead(200, { 'Content-Type': 'text/xml' });
+        res.end(twiml.toString());
+      })
+
 
   });
 
