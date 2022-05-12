@@ -73,17 +73,6 @@ module.exports = (db) => {
     //     to: twilioReceivingNumber //TODO: Make this the result of a database query for the user's phone number
     //   })
     //   .then(message => console.log(message.sid));
-
-    // db.query(`SELECT * FROM users;`)
-    //   .then(data => {
-    //     const users = data.rows;
-    //     res.json({ users });
-    //   })
-    //   .catch(err => {
-    //     res
-    //       .status(500)
-    //       .json({ error: err.message });
-    //   });
   });
   return router;
 };
