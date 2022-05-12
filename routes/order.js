@@ -25,9 +25,10 @@ module.exports = (db) => {
     const incomingOrder = { "51": 1, "52": 1, "53": 1, "54": 1, "55": 2 };
 
     const userId = 1;
+    // const userId = req.session.userId;
+
     const timeOrdered = new Date(Date.now());
 
-    // const userId = req.session.userId;
     const values = [userId, timeOrdered];
 
     db.query(`
@@ -56,23 +57,33 @@ module.exports = (db) => {
           }
         }
 
+        queryParams += ` RETURNING order_id;`
+
         return db.query(queryParams, values);
 
       })
       .then((result) => {
-        return res.status(200).json("Still working");
+
+        const values = [result.rows[0].order_id];
+        client.messages
+          .create({
+            body: `${values[0]}`,
+            from: twilioNumber,
+            to: twilioReceivingNumber
+          })
+          .then(message => console.log(message.sid));
+
+        return db.query(`UPDATE orders
+        SET total_price = (select sum(price) from ordered_items join menu_items on item_id = menu_items.id where order_id = $1)
+        WHERE id = $1;
+        `, values)
+      })
+      .then((result) => {
+        return res.status(200).json('cooooooool');
       })
       .catch((err) => {
         console.log(err.message)
       })
-
-    // client.messages
-    //   .create({
-    //     body: `POSTING`,
-    //     from: twilioNumber,
-    //     to: twilioReceivingNumber //TODO: Make this the result of a database query for the user's phone number
-    //   })
-    //   .then(message => console.log(message.sid));
   });
   return router;
 };
