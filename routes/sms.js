@@ -16,33 +16,29 @@ const client = require('twilio')(accountSid, authToken);
 module.exports = (db) => {
   router.post("/", (req, res) => {
 
-
-    const incomingMessage = req.body.Body;
-    if (incomingMessage[0] !== "!") {
+    let incomingMessage = req.body.Body;
+    if (!incomingMessage.startsWith("!")) {
       const twiml = new MessagingResponse();
 
       twiml.message(`Please do not respond to this number.`);
 
-      res.writeHead(200, { 'Content-Type': 'text/xml' });
-      res.end(twiml.toString());
-      return router;
+      return res.send(twiml.toString());
     }
 
-    const order = incomingMessage.split(":")[0].slice(1);
-    const currentDate = new Date();
-    const timeAsMlSeconds = currentDate.getTime();
-    const time = incomingMessage.split(":")[1] * 60 * 1000;
-    const pickupTime = new Date(timeAsMlSeconds + time);
+    incomingMessage = incomingMessage.substring(1); //Remove "!"
+    let [orderId, orderDelay] = incomingMessage.split(":");
+    orderDelay *= 60 * 1000; //Convert minutes to milliseconds
+    const pickupTime = new Date(Date.now() + orderDelay);
 
     client.messages
       .create({
-        body: `Order: ${order} will be ready at ${pickupTime}`,
+        body: `Order: ${orderId} will be ready at ${pickupTime.toLocaleString()}`,
         from: twilioNumber,
-        to: twilioReceivingNumber
+        to: twilioReceivingNumber //TODO: Make this the result of a database query for the user's phone number
       })
       .then(message => console.log(message.sid));
 
-    const values = [pickupTime, order]
+    const values = [pickupTime, orderId];
 
     db.query(`
     UPDATE orders
@@ -53,19 +49,17 @@ module.exports = (db) => {
         const twiml = new MessagingResponse();
 
         twiml.message(`Server Updated`);
-
-        res.writeHead(200, { 'Content-Type': 'text/xml' });
-        return res.end(twiml.toString());
+        console.log(twiml);
+        return res.send(twiml.toString());
       })
       .catch(err => {
         console.log(err);
         const twiml = new MessagingResponse();
 
-        twiml.message(`Server Error`);
+        twiml.message(`Formatting error, please be sure to use !orderId:timeInMinutes`);
 
-        res.writeHead(500, { 'Content-Type': 'text/xml' });
-        res.end(twiml.toString());
-      })
+        return res.status(500).send(twiml.toString());
+      });
 
 
   });
