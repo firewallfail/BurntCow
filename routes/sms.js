@@ -11,11 +11,21 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 module.exports = (db) => {
   router.post("/", (req, res) => {
 
-    console.log(req.body.Body);
-    const order = req.body.Body.split(":")[0];
+    const incomingMessage = req.body.Body;
+    if (incomingMessage[0] !== "!") {
+      const twiml = new MessagingResponse();
+
+      twiml.message(`Please do not respond to this number.`);
+
+      res.writeHead(200, { 'Content-Type': 'text/xml' });
+      res.end(twiml.toString());
+      return router;
+    }
+
+    const order = incomingMessage.split(":")[0].slice(1);
     const currentDate = new Date();
     const timeAsMlSeconds = currentDate.getTime();
-    const time = req.body.Body.split(":")[1] * 60 * 1000;
+    const time = incomingMessage.split(":")[1] * 60 * 1000;
     const pickupTime = new Date(timeAsMlSeconds + time);
 
 
