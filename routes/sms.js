@@ -32,7 +32,7 @@ module.exports = (db) => {
 
     client.messages
       .create({
-        body: `Order: ${orderId} will be ready at ${pickupTime.toLocaleString()}`,
+        body: `Order: ${orderId} will be ready at ${pickupTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}`,
         from: twilioNumber,
         to: twilioReceivingNumber //TODO: Make this the result of a database query for the user's phone number
       })
