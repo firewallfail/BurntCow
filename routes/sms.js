@@ -7,9 +7,15 @@
 const express = require('express');
 const router = express.Router();
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const accountSid = process.env.TWILIO_ACC_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_NUMBER;
+const twilioReceivingNumber = process.env.MY_NUMBER;
+const client = require('twilio')(accountSid, authToken);
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
+
 
     const incomingMessage = req.body.Body;
     if (incomingMessage[0] !== "!") {
@@ -28,6 +34,13 @@ module.exports = (db) => {
     const time = incomingMessage.split(":")[1] * 60 * 1000;
     const pickupTime = new Date(timeAsMlSeconds + time);
 
+    client.messages
+      .create({
+        body: `Order: ${order} will be ready at ${pickupTime}`,
+        from: twilioNumber,
+        to: twilioReceivingNumber
+      })
+      .then(message => console.log(message.sid));
 
     const twiml = new MessagingResponse();
 
