@@ -52,9 +52,18 @@ module.exports = (db) => {
       .then(() => {
         const twiml = new MessagingResponse();
 
-        twiml.message(`Server updated`);
+        twiml.message(`Server Updated`);
 
         res.writeHead(200, { 'Content-Type': 'text/xml' });
+        return res.end(twiml.toString());
+      })
+      .catch(err => {
+        console.log(err);
+        const twiml = new MessagingResponse();
+
+        twiml.message(`Server Error`);
+
+        res.writeHead(500, { 'Content-Type': 'text/xml' });
         res.end(twiml.toString());
       })
 
