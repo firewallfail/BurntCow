@@ -6,6 +6,11 @@
 
 const express = require('express');
 const router = express.Router();
+const accountSid = process.env.TWILIO_ACC_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_NUMBER;
+const twilioReceivingNumber = process.env.RECEIVING_NUMBER;
+const client = require('twilio')(accountSid, authToken);
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -16,6 +21,10 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
+
+    const incomingOrder = { "51": 1, "52": 1, "53": 1, "54": 1, "55": 2 };
+
+    console.log(incomingOrder);
 
     db.query(`SELECT * FROM users;`)
       .then(data => {
