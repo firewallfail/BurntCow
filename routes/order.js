@@ -56,11 +56,11 @@ module.exports = (db) => {
           }
         }
 
+        return db.query(queryParams, values);
 
-
-        console.log(queryParams);
-
-        return res.status(200).json(queryParams);
+      })
+      .then((result) => {
+        return res.status(200).json("Still working");
       })
       .catch((err) => {
         console.log(err.message)
