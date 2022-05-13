@@ -17,6 +17,9 @@ module.exports = (db) => {
     const templateVars = {
       userId: req.session.userId
     };
+    if (!req.session.userId) {
+      res.redirect("/login");
+    }
     res.render("order", templateVars);
   });
 
