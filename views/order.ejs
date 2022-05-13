@@ -7,15 +7,97 @@
   <!-- Shared Libraries -->
   <%- include("partials/head"); %>
 
+  <link rel="stylesheet" href="/styles/order.css" type="text/css" />
+  <!-- Internal JS Libraries -->
+  <script type="text/javascript" src="/scripts/order.js"></script>
+
 </head>
 
 <body>
 
   <%- include("partials/header", locals); %>
 
-    <main>
-      <h1>order</h1>
-    </main>
+  <main>
+    <div class="cart">
+      <div class="card my-5">
+        <header class="card-header">
+          Order details
+        </header>
+        <div id="checkout" class="card-body">
+        </div>
+        <footer class="card-footer">
+          <div class="right-aligned">
+            <span>
+              Sub-Total:
+            </span>
+            <span>
+              Taxes:
+            </span>
+            <span>
+              Total:
+            </span>
+          </div>
+          <div class="vr"></div>
+          <div class="right-aligned">
+            <span id="subtotal">$5.00</span>
+            <span id="taxes">$2.50</span>
+            <span id="total">$7.50</span>
+          </div>
+        </footer>
+      </div>
+      <aside>
+        <div class="card mt-5">
+          <header class="card-header">
+            Review Order Details
+          </header>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <h5>
+                My Location
+              </h5>
+              <p>Montreal, QC H8Y 2T6</p>
+            </li>
+            <li class="list-group-item">
+              <h5>
+                My Store
+              </h5>
+              <p>
+                Store #10690
+              </p>
+            </li>
+            <li class="list-group-item">
+              <h5>
+                Service Method
+              </h5>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" checked>
+                <label class="form-check-label" for="flexRadioDisabled">
+                  Carryout
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" disabled>
+                <label class="form-check-label" for="flexRadioCheckedDisabled">
+                  Delivery
+                </label>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h5>
+                Order Timing
+              </h5>
+              <p class="text-muted">
+                You will be informed of pickup timing upon response from restaurant owner
+              </p>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-primary">
+          Checkout
+        </button>
+      </aside>
+    </div>
+  </main>
 
 </body>
 
