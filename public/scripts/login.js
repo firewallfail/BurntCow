@@ -5,7 +5,7 @@ $(document).ready(() => {
 
     $.post('/login', $('#login').serialize())
       .done(() => {
-        window.location.replace('/order');
+        window.location.replace('/');
       })
       .fail(res => {
         $('#passwordInput').val('');

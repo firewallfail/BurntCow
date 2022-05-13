@@ -12,7 +12,7 @@ const { BCRYPT_SALT } = process.env;
 module.exports = (db) => {
   router.get("/", (req, res) => {
     if (req.session.userId) {
-      return res.redirect('/order');
+      return res.redirect('/');
     }
     res.render("login");
   });
@@ -31,7 +31,7 @@ module.exports = (db) => {
     FROM users
     WHERE LOWER(email) LIKE $1
     ;`,
-    [email.toLowerCase()])
+      [email.toLowerCase()])
       .then(data => {
         const user = data.rows[0];
         if (!user) {

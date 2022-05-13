@@ -11,13 +11,13 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     res.clearCookie('user_id');
     res.clearCookie('user_id.sig'); //TODO: Use recommended method of clearing session -> req.session = null
-    return res.redirect("/order");
+    return res.redirect("/");
   });
 
   router.post("/", (req, res) => {
     res.clearCookie('user_id');
     res.clearCookie('user_id.sig');
-    return res.redirect("/order");
+    return res.redirect("/");
   });
   return router;
 };
