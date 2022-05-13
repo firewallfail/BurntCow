@@ -81,6 +81,6 @@ const checkoutOrder = () => {
         $modal.append(`<p>Your order has been confirmed as order#${data}<p>`);
         let prep = new Date(Date.now() + (30 * 60 * 1000));
         $modal.append(`<p>It will be ready in 30 minutes, at ${prep.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>`);
-      }, 1000);
+      }, 15000);
     });
 };
