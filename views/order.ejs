@@ -76,7 +76,8 @@
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" disabled>
+                <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled"
+                  disabled>
                 <label class="form-check-label" for="flexRadioCheckedDisabled">
                   Delivery
                 </label>
@@ -92,13 +93,29 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-primary">
+        <button id="checkoutButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Checkout
         </button>
       </aside>
     </div>
   </main>
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body d-flex flex-column align-items-center">
+          <h5>Awaiting order confirmation from BurntCow...</h5>
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

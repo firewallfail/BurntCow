@@ -22,7 +22,7 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
 
-    const incomingOrder = { "51": 1, "52": 1, "53": 1, "54": 1, "55": 2 };
+    const incomingOrder = req.body;
 
     const userId = 1;
     // const userId = req.session.userId;
@@ -53,11 +53,11 @@ module.exports = (db) => {
         for (let i = 1; i < values.length; i += 3) {
           queryParams += (`($${i}, $${i + 1}, $${i + 2})`);
           if (i + 2 < values.length) {
-            queryParams += `, `
+            queryParams += `, `;
           }
         }
 
-        queryParams += ` RETURNING order_id;`
+        queryParams += ` RETURNING order_id;`;
 
         return db.query(queryParams, values);
 
@@ -73,17 +73,19 @@ module.exports = (db) => {
           })
           .then(message => console.log(message.sid));
 
-        return db.query(`UPDATE orders
+        db.query(`UPDATE orders
         SET total_price = (select sum(price) from ordered_items join menu_items on item_id = menu_items.id where order_id = $1)
-        WHERE id = $1;
-        `, values)
+        WHERE id = $1
+        RETURNING order_id;
+        `, values);
+        return result.rows[0].order_id;
       })
       .then((result) => {
-        return res.status(200).json('cooooooool');
+        return res.status(200).json(result);
       })
       .catch((err) => {
-        console.log(err.message)
-      })
+        console.log(err.message);
+      });
   });
   return router;
 };

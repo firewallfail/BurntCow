@@ -47,6 +47,7 @@ $(document).ready(() => {
         console.log(error);
       });
   }
+  $("#checkoutButton").on('click', checkoutOrder);
 });
 
 const updatePrice = () => {
@@ -62,4 +63,24 @@ const updatePrice = () => {
   $subtotal.text(toDollar(subTotal));
   $taxes.text(toDollar(subTotal * .15));
   $total.text(toDollar(subTotal * 1.15));
+};
+
+const checkoutOrder = () => {
+  $.post("/order", getCart())
+    .done((data) => {
+      console.log(data);
+      setTimeout(() => {
+        const $modal = $("#exampleModal > div > div > div.modal-body.d-flex.flex-column.align-items-center");
+        $modal.empty();
+        $modal.append("<h5>Thank you for purchasing your lunch with us!</h5>");
+        $modal.append(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+          <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+        </svg>
+        `);
+        $modal.append(`<p>Your order has been confirmed as order#${data}<p>`);
+        let prep = new Date(Date.now() + (30 * 60 * 1000));
+        $modal.append(`<p>It will be ready in 30 minutes, at ${prep.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>`);
+      }, 1000);
+    });
 };
