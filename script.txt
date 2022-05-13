@@ -1,0 +1,37 @@
+Matt: Share screen starting already logged in and on menu
+Brent: Ask Matt to add 2 burgers to the menu then delete one and increase the other burger by 1
+Matt: Go to checkout page to place the order wait for server to respond with pickup time
+
+TBD: Whoever is receiving the texts should show the camera
+
+Matt: Discuss what you did {
+  Menu,
+  Register,
+  Cart,
+  Wireframe,
+  DB queries,
+  etc
+}
+
+Matt: Challenges {
+  Taking advantage of ejs while using ajax,
+  Adding seperate events to each individual button,
+  Maintaining consistent data between the server-side and client side,
+  Balancing bootstrap and custom CSS
+}
+
+Brent: Discuss what you did {
+  Login,
+  Profile,
+  DB schema and seeds,
+  Twilio integration,
+  etc
+}
+
+Challenges: {
+  Spent too much time on features that wouldn't be shown
+  Integrating the twilio api
+  Struggled with CSS
+}
+
+If that doesn't cover enough time logout and register new user then update their profile
