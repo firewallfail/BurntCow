@@ -4,12 +4,17 @@ nav {
     min-width: 250px;
   }
 
+  #cart-items {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
   .item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px 10px;
-    min-width: 400px;
+    min-width: 500px;
 
     .left-group {
       display: flex;
@@ -19,17 +24,13 @@ nav {
 
     .right-group {
       display: flex;
-      flex-direction: column;
-
-      input {
-        width: 2rem;
-      }
-
+      align-items: center;
+      gap: 1rem
     }
 
     img {
-      width: 10rem;
-      height: 10rem;
+      width: 7.5rem;
+      height: 7.5rem;
       border-radius: 50%;
       object-fit: cover;
     }
