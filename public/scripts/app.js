@@ -78,17 +78,16 @@ const updateCart = function() {
           </div>
         </div>
         <div class="right-group">
-          <div class="d-flex justify-content-between">
-            <label class="counter">${cart[item.id]}</label>
-            <div class="d-flex flex-column">
-              <i class="fa-solid fa-plus"></i>
-              <i class="fa-solid fa-minus"></i>
-            </div>
+          <div class="d-flex flex-column">
+            <i class="btn fa-solid fa-plus"></i>
+            <i class="btn fa-solid fa-minus"></i>
           </div>
+          <label class="counter">${cart[item.id]}</label>
           <button class="btn btn-danger fa fa-close"></button>
         </div>
         `);
         $cartMenu.append($listItem);
+
         $listItem.find(".fa-plus").on("click", function() {
           incrementItem(item.id);
           const $counter = $listItem.find(".counter");
@@ -98,14 +97,18 @@ const updateCart = function() {
           const $counter = $listItem.find(".counter");
           decrementItem(item.id);
           $counter.text(parseInt($counter.text(), 10) - 1);
-          if (parseInt($counter.text(), 10) === 0) {
+          if (parseInt($counter.text(), 10) < 1) {
             removeFromCart(item.id);
-            updateCart();
           }
         });
         $listItem.find(".fa-close").on("click", function() {
           removeFromCart(item.id);
-          $listItem.remove();
+          $listItem.slideUp(() => {
+            $listItem.remove();
+            if ($cartMenu.is(":empty")) {
+              $cartMenu.append(`<li><span class="dropdown-item-text">Your cart is currently empty!</span></li>`);
+            }
+          });
         });
       })
       .catch(error => {
