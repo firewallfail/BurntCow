@@ -14,7 +14,10 @@ Matt: Discuss what you did {
 }
 
 Matt: Challenges {
-
+  Taking advantage of ejs while using ajax,
+  Adding seperate events to each individual button,
+  Maintaining consistent data between the server-side and client side,
+  Balancing bootstrap and custom CSS
 }
 
 Brent: Discuss what you did {
