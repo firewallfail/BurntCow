@@ -31,7 +31,7 @@ module.exports = (db) => {
     FROM users
     WHERE LOWER(email) LIKE $1
     ;`,
-      [email.toLowerCase()])
+    [email.toLowerCase()])
       .then(data => {
         const user = data.rows[0];
         if (!user) {

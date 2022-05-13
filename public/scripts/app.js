@@ -99,6 +99,12 @@ const updateCart = function() {
           $counter.text(parseInt($counter.text(), 10) - 1);
           if (parseInt($counter.text(), 10) < 1) {
             removeFromCart(item.id);
+            $listItem.slideUp(() => {
+              $listItem.remove();
+              if ($cartMenu.is(":empty")) {
+                $cartMenu.append(`<li><span class="dropdown-item-text">Your cart is currently empty!</span></li>`);
+              }
+            });
           }
         });
         $listItem.find(".fa-close").on("click", function() {
